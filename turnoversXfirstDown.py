@@ -31,7 +31,7 @@ df_firstdowns = statsNFL[statsNFL[columnTeam].isin(top5_firstdowns)]
 
 plt.figure(figsize=(10, 6))
 sns.lineplot(data=df_firstdowns, x=columnYear, y=columnFirstDown, hue=columnTeam, palette="Set2")
-plt.title("Mais  de First Downs por Ano (Top 5 Times)")
+plt.title("Mais de First Downs por Ano (Top 5 Times)")
 plt.xlabel("Ano")
 plt.ylabel("Total de First Downs")
 plt.legend(title="Time", bbox_to_anchor=(1.05, 1), loc='upper left')
