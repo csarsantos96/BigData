@@ -65,12 +65,6 @@ top5Compare = pd.concat([
     top5Eff.assign(tipo='Mais eficientes nas corridas'),
 ])
 
-import seaborn as sns
-import matplotlib.pyplot as plt
-import  os
-
-os.makedirs('img', exist_ok=True)
-
 plt.figure(figsize=(12, 6))
 sns.barplot(
     data=top5Compare,
@@ -89,11 +83,6 @@ plt.savefig('img/top5_corridas_por_td_comparativo.png')
 plt.show()
 
 
-
-
-
-
-
 # times que precisam fazer menos pass para fazer o touchdown x times que precisam fazer mais para o touchdown
 
 nflStats['pass_att_per_td'] = nflStats[passAtt] / nflStats[passTD]
@@ -109,12 +98,6 @@ top5ComparePass = pd.concat([
 
     top5EffPass.assign(tipo='Mais eficientes nos passes'),
 ])
-
-import seaborn as sns
-import matplotlib.pyplot as plt
-import  os
-
-os.makedirs('img', exist_ok=True)
 
 plt.figure(figsize=(12, 6))
 sns.barplot(
