@@ -4,7 +4,7 @@ import seaborn as sns
 
 sns.set_theme(style="ticks")
 
-statsNFL = pd.read_csv('team_stats_2003_2023.csv')
+statsNFL = pd.read_csv('../csv/team_stats_2003_2023.csv')
 
 columnYear = 'year'
 columnRaNking = 'wins'

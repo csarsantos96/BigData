@@ -2,7 +2,6 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import matplotlib.image as mpimg
 from PIL import Image
 import numpy as np
 
@@ -21,8 +20,8 @@ def load_and_resize(path, size, alpha=1.0):
     img = img.resize(size, Image.LANCZOS)
     return np.asarray(img)
 
-statsNFL = pd.read_csv('team_stats_2003_2023.csv')
-conferenceNFL = pd.read_csv("nfl_teams.csv")
+statsNFL = pd.read_csv('../csv/team_stats_2003_2023.csv')
+conferenceNFL = pd.read_csv("../csv/nfl_teams.csv")
 
 columnYear = 'year'
 passComplete = 'pass_cmp'
@@ -30,7 +29,7 @@ columnTeam = 'team'
 conferenceTeam = 'team_conference'
 teamInfoColumn = 'team_name'
 
-logo_path = 'logos'
+logo_path = '../logos'
 output_path = 'numeroPassePorAno'
 os.makedirs(logo_path, exist_ok=True)
 os.makedirs(output_path, exist_ok=True)
