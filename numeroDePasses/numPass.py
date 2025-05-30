@@ -5,21 +5,6 @@ import seaborn as sns
 from PIL import Image
 import numpy as np
 
-def apply_transparency(img: Image.Image, alpha: float) -> Image.Image:
-    if img.mode != 'RGBA':
-        img = img.convert('RGBA')
-    alpha_layer = img.split()[3].point(lambda p: int(p * alpha))
-    img.putalpha(alpha_layer)
-    return img
-
-def load_and_resize(path, size, alpha=1.0):
-    img = Image.open(path)
-    img = img.convert("RGBA")
-    if alpha < 1:
-        img = apply_transparency(img, alpha)
-    img = img.resize(size, Image.LANCZOS)
-    return np.asarray(img)
-
 statsNFL = pd.read_csv('../csv/team_stats_2003_2023.csv')
 conferenceNFL = pd.read_csv("../csv/nfl_teams.csv")
 
@@ -70,6 +55,23 @@ for team in teams:
     team_logo_file = os.path.join(logo_path, f"{logo_name}.png")
     nfl_logo_file = os.path.join(logo_path, "NFL.png")
     conf_logo_file = os.path.join(logo_path, f"{conference}.png")
+
+
+    def apply_transparency(img: Image.Image, alpha: float) -> Image.Image:
+        if img.mode != 'RGBA':
+            img = img.convert('RGBA')
+        alpha_layer = img.split()[3].point(lambda p: int(p * alpha))
+        img.putalpha(alpha_layer)
+        return img
+
+
+    def load_and_resize(path, size, alpha=1.0):
+        img = Image.open(path)
+        img = img.convert("RGBA")
+        if alpha < 1:
+            img = apply_transparency(img, alpha)
+        img = img.resize(size, Image.LANCZOS)
+        return np.asarray(img)
 
     if os.path.exists(team_logo_file):
         team_logo = load_and_resize(team_logo_file, (60, 60))
